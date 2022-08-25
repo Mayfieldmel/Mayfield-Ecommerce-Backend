@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
 // get one product
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
-  Product.findAll({
+  Product.findOne({
     where: {
       id: req.params.id
     },
@@ -67,7 +67,7 @@ router.get('/:id', (req, res) => {
   })
     .then(dbProductData => {
       if (!dbProductData) {
-        res.status(404).json({message: 'No product found!'})
+        res.status(404).json({message: 'Product not found!'})
       }
       res.json(dbProductData);
     })
@@ -167,7 +167,7 @@ router.delete('/:id', (req, res) => {
 })
 .then(dbProductData => {
   if (!dbProductData) {
-    res.status(404).json({message: 'No product found!'})
+    res.status(404).json({message: 'Product not found!'})
   }
   res.json(dbProductData);
 })
