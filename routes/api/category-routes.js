@@ -69,6 +69,30 @@ router.post('/', (req, res) => {
 // PUT /api/categories/1
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+  Category.update(
+    {
+      product_name: req.body.product_name,
+      price: req.body.price,
+      stock: req.body.stock,
+      category_id: req.body.category_id
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+  .then(dbCategoryData => {
+    if(!dbCategoryData) {
+      res.status(404).json({message: "Category not found."});
+      return;
+    }
+    res.json(dbCategoryData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
 });
 
 // DELETE /api/categories/1
