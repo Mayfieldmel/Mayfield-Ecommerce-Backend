@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const sequelize = require("../../config/connection");
 const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
@@ -54,10 +55,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new category
   Category.create({
-    product_name: req.body.product_name,
-    price: req.body.price,
-    stock: req.body.stock,
-    category_id: req.body.category_id
+    category_name: req.body.category_name
   })
   .then(dbCategoryData => res.json(dbCategoryData))
   .catch(err => {
@@ -71,10 +69,7 @@ router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(
     {
-      product_name: req.body.product_name,
-      price: req.body.price,
-      stock: req.body.stock,
-      category_id: req.body.category_id
+      category_name: req.body.category_name
     },
     {
       where: {

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const sequelize = require("../../config/connection");
 const { Tag, Product, ProductTag } = require('../../models');
 
 // The `/api/tags` endpoint
@@ -11,11 +12,8 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Product,
-        attributes: ['id', 'tag_name'],
-        include: {
-          model: ProductTag,
-          attributes: ['id', 'product_id', 'tag_id']
-        }
+        through: ProductTag,
+        as: 'product_tags'
       }
     ]
   })
@@ -29,22 +27,15 @@ router.get('/', (req, res) => {
 // GET /api/tags/1
 router.get('/:id', (req, res) => {
   // find a single tag by its `id`
-  Category.findOne({
+  Tag.findOne({
     where: {
       id: req.params.id
     },
-    attributes: [
-      'id',
-      'tag_name'
-    ],
     include: [
       {
         model: Product,
-        attributes: ['id', 'tag_name'],
-        include: {
-          model: ProductTag,
-          attributes: ['id', 'product_id', 'tag_id']
-        }
+        through: ProductTag,
+        as: 'product_tags'
       }
     ],
    
