@@ -23,7 +23,7 @@ Clone the github repo to your computer. Then, initiate npm by typing ***npm init
 
 ## Usage
 
-See full-length demo at [https://watch.screencastify.com/v/NPkroTPPWRk4nwg3QRuT](https://watch.screencastify.com/v/NPkroTPPWRk4nwg3QRuT) .
+See full-length demo at [https://watch.screencastify.com/v/OmwUlVLAFiuLAnclghWA](https://watch.screencastify.com/v/OmwUlVLAFiuLAnclghWA) .
 
 ## Credits
 
