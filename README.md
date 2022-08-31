@@ -6,7 +6,7 @@ This repo houses the code used to build the Mayfield E-commerce BackEnd.
 
 ## The Generator
 
-The Mayfield Employee Tracker is a command-line app that creates and manages an employee database.
+The Mayfield E-Commerce Backend app provides the backend to an e-commerce website. The app configures a working api to use Sequelize to interact with a MySQL database.
 
 ## Tools
 
